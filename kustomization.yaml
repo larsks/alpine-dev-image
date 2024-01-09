@@ -1,0 +1,14 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+commonLabels:
+  image: alpine-dev
+
+resources:
+  - buildconfig.yaml
+  - imagestream.yaml
+
+secretGenerator:
+- name: github-buildconfig
+  envs:
+  - github-buildconfig.env
